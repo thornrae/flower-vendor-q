@@ -25,11 +25,14 @@ setInterval( () => {
     orderId: orderId,
   }
   console.log(payload);
+
+  capsConnection.emit('pickup', payload);
+
 }, 7000);
 
 capsConnection.on('delivered', thankYou);
 
 
 function thankYou(payload) {
-  console.log(`VENDOR: thank you for delivery of order #: ${payload.orderId}`);
+  console.log(`VENDOR: thank you for ${payload.storeName}delivery of order #: ${payload.orderId}`);
 }
